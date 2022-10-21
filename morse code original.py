@@ -35,6 +35,9 @@ def StripTrailingSpaces(Transmission):
 
 def GetTransmission():
   FileName = input("Enter file name: ")
+  while FileName[-4:] != ".txt":
+    print("This is not a txt file")
+    FileName = input("Enter file name: ")
   try:
     FileHandle = open(FileName, 'r')
     Transmission = FileHandle.readline()
@@ -117,7 +120,7 @@ def ReceiveMorseCode(Dash, Letter, Dot):
   print(PlainText)
 
 def SendMorseCode(MorseCode):
-  PlainText = input("Enter your message (uppercase letters and spaces only): ")
+  PlainText = input("Enter your message: ").upper()
   PlainTextLength = len(PlainText)
   MorseCodeString = EMPTYSTRING
   for i in range(PlainTextLength):
@@ -156,13 +159,14 @@ def SendReceiveMessages():
   while not ProgramEnd:
     DisplayMenu() 
     MenuOption = GetMenuOption()
-    if MenuOption == 'R':
+    if MenuOption == 'R' or MenuOption =='r':
       ReceiveMorseCode(Dash, Letter, Dot)
-    elif MenuOption == 'S':
+    elif MenuOption == 'S' or MenuOption == 's':
       SendMorseCode(MorseCode) 
-    elif MenuOption == 'X':
+    elif MenuOption == 'X' or MenuOption == "x":
       ProgramEnd = True
     
 
 if __name__ == "__main__":
   SendReceiveMessages()
+
