@@ -70,7 +70,7 @@ def GetNextSymbol(i, Transmission):
     elif SymbolLength == 0: 
       Symbol = SPACE
     else:
-      ReportError("Non-standard symbol received") 
+      ReportError('Non-standard symbol received') 
       Symbol = EMPTYSTRING
   return i, Symbol 
 
